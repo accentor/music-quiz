@@ -16,8 +16,11 @@ export default {
     const store = useStore();
 
     async function loadData() {
-      await store.dispatch("codec_conversions/index");
-      await store.dispatch("tracks/index");
+      const pendingPromises = [];
+      pendingPromises.push(store.dispatch("codec_conversions/index"));
+      pendingPromises.push(store.dispatch("plays/index"));
+      pendingPromises.push(store.dispatch("tracks/index"));
+      await Promise.all(pendingPromises);
     }
 
     loadData();
