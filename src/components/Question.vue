@@ -66,13 +66,19 @@ export default {
     const selected = ref();
 
     const tracks = computed(() => {
-      let t = store.getters["tracks/randomTracks"].filter(
-        (t) => !props.usedTracks.includes(t.id)
-      );
-      if (props.difficulty === "medium") {
-        t = t.filter((t) => t.review_comment === null);
+      let t;
+      switch (props.difficulty) {
+        case "hard":
+          t = store.getters["tracks/randomTracks"];
+          break;
+        case "medium":
+          t = store.getters["tracks/tracksWithoutReviewComment"];
+          break;
+        case "easy":
+          t = store.getters["tracks/tracksPlayedOnce"];
+          break;
       }
-      return t;
+      return t.filter((t) => !props.usedTracks.includes(t.id));
     });
 
     options.value = tracks.value.slice(-4);

@@ -74,5 +74,13 @@ export default {
     randomTracks: (state, getters) => {
       return randomSort(getters.tracks);
     },
+    tracksWithoutReviewComment: (state, getters) => {
+      return getters.randomTracks.filter((t) => t.review_comment === null);
+    },
+    tracksPlayedOnce: (state, getters, rootState, rootGetters) => {
+      return getters.tracksWithoutReviewComment.filter((t) =>
+        rootGetters["plays/playedTracks"].includes(t.id)
+      );
+    },
   },
 };

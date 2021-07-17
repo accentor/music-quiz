@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import codec_conversions from "./modules/codec_conversions";
 import tracks from "./modules/tracks";
+import plays from "./modules/plays";
 import games from "./modules/games";
 import auth from "./modules/auth";
 import { createLogger } from "vuex";
@@ -32,6 +33,7 @@ const store = createStore({
     auth,
     codec_conversions,
     games,
+    plays,
     tracks,
   },
 });

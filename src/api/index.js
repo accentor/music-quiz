@@ -11,6 +11,7 @@ const AccentorApi = {
   image_types: new ApiModule("image_types"),
   labels: new ApiModule("labels"),
   locations: new ApiModule("locations"),
+  plays: new ApiModule("plays"),
   rescan: new ApiModule("rescan"),
   tracks: new ApiModule("tracks"),
   users: new ApiModule("users"),

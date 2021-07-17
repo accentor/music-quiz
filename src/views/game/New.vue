@@ -36,15 +36,18 @@
         </label>
         <input
           id="game_difficulty_easy"
+          v-model="difficulty"
+          :disabled="!enoughPlays"
           type="radio"
           name="difficulty"
           value="easy"
-          disabled="disabled"
           class="button-group__input"
         />
         <label for="game_difficulty_easy" class="button-group__button">
           Easy
-          <span class="button-group__info">Not yet available</span>
+          <span class="button-group__info">{{
+            enoughPlays ? "Tracks you've played" : "Not available yet"
+          }}</span>
         </label>
       </div>
       <button
@@ -106,8 +109,13 @@ export default {
       router.push(`/app/game/play/${difficulty.value}`);
     }
 
+    const enoughPlays = computed(
+      () => Object.keys(store.getters["tracks/tracksPlayedOnce"]).length > 100
+    );
+
     return {
       difficulty,
+      enoughPlays,
       leaderBoard,
       startGame,
     };
