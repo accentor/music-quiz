@@ -55,8 +55,8 @@ export default {
   },
   getters: {
     plays: (state) => Object.values(state.plays),
-    playedTracks: (state, getters) => {
-      return [...new Set(getters.plays.map((t) => t.track_id))]
-    },
+    playedTracks: (state, getters) => [
+      ...new Set(getters.plays.map((t) => t.track_id)),
+    ],
   },
 };
