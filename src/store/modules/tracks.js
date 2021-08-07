@@ -15,7 +15,9 @@ export default {
       for (let id in oldTracks) {
         state.tracks[id] = oldTracks[id];
       }
+      const loaded = new Date();
       for (let track of payload) {
+        track.loaded = loaded;
         state.tracks[track.id] = track;
       }
     },
