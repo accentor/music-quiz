@@ -46,7 +46,7 @@ export default {
   },
   actions: {
     async index({ commit, rootState }) {
-      const generator = AccentorApi.tracks.indexGenerator(rootState.auth);
+      const generator = AccentorApi.tracks.index(rootState.auth);
       try {
         await fetchAll(commit, generator, "setTracks");
         return true;
