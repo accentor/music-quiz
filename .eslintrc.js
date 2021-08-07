@@ -3,6 +3,7 @@ module.exports = {
   env: {
     node: true,
   },
+  ignorePatterns: ["dist/**/*"],
   extends: [
     "eslint:recommended",
     "plugin:vue/vue3-recommended",
