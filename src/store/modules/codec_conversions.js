@@ -33,7 +33,7 @@ export default {
   },
   actions: {
     async index({ commit, rootState }) {
-      const generator = AccentorApi.codec_conversion.indexGenerator(
+      const generator = AccentorApi.codecConversions.index(
         rootState.auth
       );
       try {

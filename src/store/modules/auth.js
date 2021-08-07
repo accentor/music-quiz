@@ -28,7 +28,7 @@ export default {
   actions: {
     async login({ commit }, data) {
       try {
-        const result = await AccentorApi.auth.create({}, data);
+        const result = await AccentorApi.authTokens.create(data);
         commit("login", result);
         return true;
       } catch (error) {
@@ -38,7 +38,7 @@ export default {
     },
     async logout({ commit, state }) {
       try {
-        await AccentorApi.auth.destroy(state, state.id);
+        await AccentorApi.authTokens.destroy(state, state.id);
         commit("logout");
         return true;
       } catch (error) {
