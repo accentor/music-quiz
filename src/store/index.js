@@ -7,9 +7,14 @@ import auth from "./modules/auth";
 import { createLogger } from "vuex";
 import VuexPersistence from "vuex-persist";
 
+const localStorageModules = ["auth", "games"];
+
 const vuexLocal = new VuexPersistence({
   storage: window.localStorage,
-  modules: ["auth", "games"],
+  key: "accentor_music_quiz",
+  modules: localStorageModules,
+  filter: (m) =>
+    localStorageModules.includes(m.type.substring(0, m.type.indexOf("/"))),
 });
 
 const plugins = [vuexLocal.plugin];
