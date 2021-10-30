@@ -18,7 +18,7 @@
     "eslint-plugin-vue": "^7.18.0",
     "postcss": "^8.3.6",
     "prettier": "^2.4.1",
-    "tailwindcss": "^2.2.15",
+    "tailwindcss": "^2.2.19",
     "vue": "^3.1.5",
     "vue-router": "4",
     "vuex": "^4.0.0",
