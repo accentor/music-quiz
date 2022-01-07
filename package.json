@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
-    "@babel/eslint-parser": "^7.16.3",
+    "@babel/eslint-parser": "^7.16.5",
     "@vitejs/plugin-vue": "^1.10.2",
     "@vue/compiler-sfc": "^3.2.22",
     "eslint": "^8.2.0",
