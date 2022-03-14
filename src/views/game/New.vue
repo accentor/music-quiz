@@ -51,22 +51,7 @@
         </label>
       </div>
       <button
-        class="
-          -mx-4
-          text-white text-xl
-          bg-primary
-          uppercase
-          font-medium
-          px-10
-          py-6
-          rounded-lg
-          hover:bg-secundary
-          focus:outline-none
-          focus:ring-4
-          focus:ring-primary
-          focus:ring-offset-4
-          focus:ring-offset-white
-        "
+        class="-mx-4 text-white text-xl bg-primary uppercase font-medium px-10 py-6 rounded-lg hover:bg-secundary focus:outline-none focus:ring-4 focus:ring-primary focus:ring-offset-4 focus:ring-offset-white"
         @click="startGame"
       >
         Start new game!

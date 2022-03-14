@@ -10,16 +10,7 @@
         <button
           v-for="option in options"
           :key="option.id"
-          class="
-            bg-secundary
-            rounded-xl
-            font-medium
-            text-white
-            px-8
-            py-4
-            truncate
-            hover:bg-primary
-          "
+          class="bg-secundary rounded-xl font-medium text-white px-8 py-4 truncate hover:bg-primary"
           :class="{
             'correct-answer': score !== null && option.id === correctOption.id,
             'wrong-answer': score === 0 && option.id === selected,

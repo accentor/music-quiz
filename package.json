@@ -13,7 +13,7 @@
     "@vue/eslint-config-prettier": "^7.0.0",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.8",
-    "prettier": "^2.4.1",
+    "prettier": "^2.5.1",
     "tailwindcss": "^3.0.23",
     "vue": "^3.2.31",
     "vue-router": "4",
