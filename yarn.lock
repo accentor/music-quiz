@@ -296,6 +296,16 @@
     estree-walker "^2.0.2"
     source-map "^0.6.1"
 
+"@vue/compiler-core@3.2.35":
+  version "3.2.35"
+  resolved "https://registry.yarnpkg.com/@vue/compiler-core/-/compiler-core-3.2.35.tgz#f2fc01bd25d859a77b0d9ef5df28f657c1979070"
+  integrity sha512-1Mtmh8ceVUoUsn/PME5oM+Dus648rCeV/fBaZ4ERLFbTHBJXj6QmDPrSn9mfEyPDXE0RYIwyJNn884NdWK+Yiw==
+  dependencies:
+    "@babel/parser" "^7.16.4"
+    "@vue/shared" "3.2.35"
+    estree-walker "^2.0.2"
+    source-map "^0.6.1"
+
 "@vue/compiler-dom@3.2.31":
   version "3.2.31"
   resolved "https://registry.yarnpkg.com/@vue/compiler-dom/-/compiler-dom-3.2.31.tgz#b1b7dfad55c96c8cc2b919cd7eb5fd7e4ddbf00e"
@@ -304,7 +314,15 @@
     "@vue/compiler-core" "3.2.31"
     "@vue/shared" "3.2.31"
 
-"@vue/compiler-sfc@3.2.31", "@vue/compiler-sfc@^3.2.30":
+"@vue/compiler-dom@3.2.35":
+  version "3.2.35"
+  resolved "https://registry.yarnpkg.com/@vue/compiler-dom/-/compiler-dom-3.2.35.tgz#11bbcca0d49f9991d64dd8fbf8a0a4453caa571c"
+  integrity sha512-I4bXB9MkRSTJ3gVXRQ4iaYJgABZGew+K/CCBoAh9fdLaeY7A7uUlS5nWGOlICSVfOH0/xk4QlcXeGZYCJkEleA==
+  dependencies:
+    "@vue/compiler-core" "3.2.35"
+    "@vue/shared" "3.2.35"
+
+"@vue/compiler-sfc@3.2.31":
   version "3.2.31"
   resolved "https://registry.yarnpkg.com/@vue/compiler-sfc/-/compiler-sfc-3.2.31.tgz#d02b29c3fe34d599a52c5ae1c6937b4d69f11c2f"
   integrity sha512-748adc9msSPGzXgibHiO6T7RWgfnDcVQD+VVwYgSsyyY8Ans64tALHZANrKtOzvkwznV/F4H7OAod/jIlp/dkQ==
@@ -320,6 +338,22 @@
     postcss "^8.1.10"
     source-map "^0.6.1"
 
+"@vue/compiler-sfc@^3.2.35":
+  version "3.2.35"
+  resolved "https://registry.yarnpkg.com/@vue/compiler-sfc/-/compiler-sfc-3.2.35.tgz#1de80f858b33548bc22d166126234435937ebe0c"
+  integrity sha512-2wKQtnuHfwBFc7uV2Cmtms3Cc7u/u6kKJI3F+i0A+9xnuahK39cCMNJKHzI9x93Xai+uft64fDc5JSh8zDQBQA==
+  dependencies:
+    "@babel/parser" "^7.16.4"
+    "@vue/compiler-core" "3.2.35"
+    "@vue/compiler-dom" "3.2.35"
+    "@vue/compiler-ssr" "3.2.35"
+    "@vue/reactivity-transform" "3.2.35"
+    "@vue/shared" "3.2.35"
+    estree-walker "^2.0.2"
+    magic-string "^0.25.7"
+    postcss "^8.1.10"
+    source-map "^0.6.1"
+
 "@vue/compiler-ssr@3.2.31":
   version "3.2.31"
   resolved "https://registry.yarnpkg.com/@vue/compiler-ssr/-/compiler-ssr-3.2.31.tgz#4fa00f486c9c4580b40a4177871ebbd650ecb99c"
@@ -327,6 +361,14 @@
   dependencies:
     "@vue/compiler-dom" "3.2.31"
     "@vue/shared" "3.2.31"
+
+"@vue/compiler-ssr@3.2.35":
+  version "3.2.35"
+  resolved "https://registry.yarnpkg.com/@vue/compiler-ssr/-/compiler-ssr-3.2.35.tgz#8d7726f95444c02f3301083e2c6c814780fb7b00"
+  integrity sha512-dJyqB8fZbvVQEnWl5VGxkWHTqx0ERnZXXqInFzyOX8FpTEidmQbUSmDrXidea7bZTdeg6ly94kZFGPYXT29mgQ==
+  dependencies:
+    "@vue/compiler-dom" "3.2.35"
+    "@vue/shared" "3.2.35"
 
 "@vue/devtools-api@^6.0.0", "@vue/devtools-api@^6.0.0-beta.11":
   version "6.1.0"
@@ -349,6 +391,17 @@
     "@babel/parser" "^7.16.4"
     "@vue/compiler-core" "3.2.31"
     "@vue/shared" "3.2.31"
+    estree-walker "^2.0.2"
+    magic-string "^0.25.7"
+
+"@vue/reactivity-transform@3.2.35":
+  version "3.2.35"
+  resolved "https://registry.yarnpkg.com/@vue/reactivity-transform/-/reactivity-transform-3.2.35.tgz#29ba344b0ec9ec7ee75ca6c1a6f349595ca150d8"
+  integrity sha512-VjdQU4nIrgsh1iPqAdYZufWgFqdH9fIl6ttO2PCFlLsrQl7b8BcuawM6moSBLF8damBzSNcqvbvQDBhsI3fyVQ==
+  dependencies:
+    "@babel/parser" "^7.16.4"
+    "@vue/compiler-core" "3.2.35"
+    "@vue/shared" "3.2.35"
     estree-walker "^2.0.2"
     magic-string "^0.25.7"
 
@@ -388,6 +441,11 @@
   version "3.2.31"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.31.tgz#c90de7126d833dcd3a4c7534d534be2fb41faa4e"
   integrity sha512-ymN2pj6zEjiKJZbrf98UM2pfDd6F2H7ksKw7NDt/ZZ1fh5Ei39X5tABugtT03ZRlWd9imccoK0hE8hpjpU7irQ==
+
+"@vue/shared@3.2.35":
+  version "3.2.35"
+  resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.35.tgz#fb60530fa009dc21473386a7639eed833877cb0f"
+  integrity sha512-/sxDqMcy0MsfQ3LQixKYDxIinDYNy1dXTsF2Am0pv0toImWabymFQ8cFmPJnPt+gh5ElKwwn7KzQcDbLHar60A==
 
 acorn-jsx@^5.3.1:
   version "5.3.1"
