@@ -1,7 +1,5 @@
-export function randomSort(items) {
-  for (let i = items.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [items[i], items[j]] = [items[j], items[i]];
-  }
-  return items;
+export function randomSort(items, seed) {
+  return [...items].sort(
+    (i1, i2) => Math.sin(seed + i1.id) - Math.sin(seed + i2.id)
+  );
 }

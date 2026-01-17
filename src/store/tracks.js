@@ -7,6 +7,8 @@ import { useAuthStore } from "./auth";
 import { randomSort } from "../lib/comparators";
 import { usePlaysStore } from "./plays";
 
+const RANDOM_SEED_MAX = 10_000;
+
 export const useTracksStore = defineStore("tracks", () => {
   const authStore = useAuthStore();
   const errorsStore = useErrorsStore();
@@ -14,12 +16,15 @@ export const useTracksStore = defineStore("tracks", () => {
 
   const startLoading = ref(new Date(0));
   const tracks = ref({});
+  const randomSeed = ref(Math.round(Math.random() * RANDOM_SEED_MAX));
   const allTracks = computed(() => Object.values(tracks.value));
 
   const tracksOver30s = computed(() =>
     allTracks.value.filter((track) => track.length > 30)
   );
-  const randomTracks = computed(() => randomSort(tracksOver30s.value));
+  const randomTracks = computed(() =>
+    randomSort(tracksOver30s.value, randomSeed.value)
+  );
   const tracksWithoutReviewComment = computed(() =>
     randomTracks.value.filter((t) => t.review_comment === null)
   );
@@ -28,6 +33,10 @@ export const useTracksStore = defineStore("tracks", () => {
       playsStore.playedTrackIds.includes(t.id)
     )
   );
+
+  function refreshRandomSeed() {
+    randomSeed.value = Math.round(Math.random() * RANDOM_SEED_MAX);
+  }
 
   function setTracks(payload) {
     const newTracks = {};
@@ -74,5 +83,6 @@ export const useTracksStore = defineStore("tracks", () => {
     randomTracks,
     tracksWithoutReviewComment,
     tracksPlayedOnce,
+    refreshRandomSeed,
   };
 });
