@@ -44,7 +44,7 @@ export default {
   },
   actions: {
     async index({ commit, rootState }) {
-      const generator = AccentorApi.plays.index(rootState.auth);
+      const generator = AccentorApi.plays.index(rootState.auth.apiToken);
       try {
         await this.playsRestored;
         await fetchAll(commit, generator, "setPlays");

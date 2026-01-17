@@ -12,9 +12,8 @@ export function usePlayer() {
   );
 
   const currentTrackURL = computed(() => {
-    const secret = store.state.auth.secret;
-    const device_id = store.state.auth.device_id;
-    let params = `/audio?secret=${secret}&device_id=${device_id}`;
+    const apiToken = store.state.auth.apiToken;
+    let params = `/audio?token=${apiToken}`;
     if (codecConversion.value) {
       params += `&codec_conversion_id=${codecConversion.value.id}`;
     }

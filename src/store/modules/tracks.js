@@ -48,7 +48,7 @@ export default {
   },
   actions: {
     async index({ commit, rootState }) {
-      const generator = AccentorApi.tracks.index(rootState.auth);
+      const generator = AccentorApi.tracks.index(rootState.auth.apiToken);
       try {
         await fetchAll(commit, generator, "setTracks");
         return true;
@@ -59,7 +59,10 @@ export default {
     },
     async read({ commit, rootState }, id) {
       try {
-        const track = await AccentorApi.tracks.read(rootState.auth, id);
+        const track = await AccentorApi.tracks.read(
+          rootState.auth.apiToken,
+          id
+        );
         commit("setTrack", { id, track });
         return true;
       } catch (error) {

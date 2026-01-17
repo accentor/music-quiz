@@ -3,21 +3,18 @@ import AccentorApi from "../../api";
 export default {
   namespaced: true,
   state: {
-    device_id: null,
-    secret: null,
+    apiToken: null,
     user_id: null,
     id: null,
   },
   mutations: {
     login(state, payload) {
-      state.device_id = payload.device_id;
-      state.secret = payload.secret;
+      state.apiToken = payload.token;
       state.user_id = payload.user_id;
       state.id = payload.id;
     },
     logout(state) {
-      state.device_id = null;
-      state.secret = null;
+      state.apiToken = null;
       state.user_id = null;
       state.id = null;
     },
@@ -49,7 +46,7 @@ export default {
   },
   getters: {
     loggedIn: (state) => {
-      return state.secret !== null && state.device_id !== null;
+      return state.apiToken !== null;
     },
     currentSession: (state) => {
       return state.id;

@@ -9,7 +9,7 @@
     "lint": "eslint --ext .js,.vue . --fix"
   },
   "dependencies": {
-    "@accentor/api-client-js": "^0.17.0",
+    "@accentor/api-client-js": "^0.23.5",
     "@vue/eslint-config-prettier": "^7.0.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.12",
