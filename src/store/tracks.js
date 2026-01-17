@@ -25,14 +25,26 @@ export const useTracksStore = defineStore("tracks", () => {
   const randomTracks = computed(() =>
     randomSort(tracksOver30s.value, randomSeed.value),
   );
-  const tracksWithoutReviewComment = computed(() =>
-    randomTracks.value.filter((t) => t.review_comment === null),
-  );
   const tracksPlayedOnce = computed(() =>
-    tracksWithoutReviewComment.value.filter((t) =>
-      playsStore.playedTrackIds.includes(t.id),
-    ),
+    randomTracks.value.filter((t) => playsStore.playedTrackIds.includes(t.id)),
   );
+  const tracksWeightedForPlayCount = computed(() => {
+    const trackIds = randomSort(
+      Object.values(playsStore.plays),
+      randomSeed.value,
+    ).map((play) => play.track_id);
+    const used = new Set();
+    const result = [];
+    for (let id of trackIds) {
+      if (!used.has(id) && tracks.value[`${id}`]) {
+        used.add(id);
+        if (tracks.value[`${id}`].length > 30) {
+          result.push(tracks.value[`${id}`]);
+        }
+      }
+    }
+    return result;
+  });
 
   function refreshRandomSeed() {
     randomSeed.value = Math.round(Math.random() * RANDOM_SEED_MAX);
@@ -81,8 +93,8 @@ export const useTracksStore = defineStore("tracks", () => {
     index,
     allTracks,
     randomTracks,
-    tracksWithoutReviewComment,
     tracksPlayedOnce,
+    tracksWeightedForPlayCount,
     refreshRandomSeed,
   };
 });

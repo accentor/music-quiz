@@ -25,6 +25,7 @@
         <input
           id="game_difficulty_medium"
           v-model="difficulty"
+          :disabled="!enoughPlays"
           type="radio"
           name="difficulty[m"
           value="medium"
@@ -32,7 +33,9 @@
         />
         <label for="game_difficulty_medium" class="button-group__button">
           Medium
-          <span class="button-group__info">No flags</span>
+          <span class="button-group__info">
+            {{ enoughPlays ? "Tracks you've played" : "Not available yet" }}
+          </span>
         </label>
         <input
           id="game_difficulty_easy"
@@ -45,9 +48,13 @@
         />
         <label for="game_difficulty_easy" class="button-group__button">
           Easy
-          <span class="button-group__info">{{
-            enoughPlays ? "Tracks you've played" : "Not available yet"
-          }}</span>
+          <span class="button-group__info">
+            {{
+              enoughPlays
+                ? "Tracks you've played weighted by play count"
+                : "Not available yet"
+            }}
+          </span>
         </label>
       </div>
       <button
