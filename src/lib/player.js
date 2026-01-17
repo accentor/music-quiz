@@ -1,18 +1,22 @@
 import { computed, ref, watch, onBeforeUnmount } from "vue";
-import { useStore } from "vuex";
 import baseURL from "../api/base_url";
+import { useTracksStore } from "../store/tracks";
+import { useCodecConversionsStore } from "../store/codec_conversions";
+import { useAuthStore } from "../store/auth";
 
 export function usePlayer() {
-  const store = useStore();
+  const authStore = useAuthStore();
+  const codecConversionsStore = useCodecConversionsStore();
+  const tracksStore = useTracksStore();
   const audio = ref(new Audio());
   const seekTime = ref(0);
   const trackID = ref(null);
   const codecConversion = computed(
-    () => store.getters["codec_conversions/codecConversions"][0]
+    () => codecConversionsStore.sortedCodecConversions[0]
   );
 
   const currentTrackURL = computed(() => {
-    const apiToken = store.state.auth.apiToken;
+    const apiToken = authStore.apiToken;
     let params = `/audio?token=${apiToken}`;
     if (codecConversion.value) {
       params += `&codec_conversion_id=${codecConversion.value.id}`;
@@ -23,12 +27,11 @@ export function usePlayer() {
 
   watch(currentTrackURL, (newValue) => {
     audio.value.setAttribute("src", newValue);
-    audio.value.load();
   });
 
   // We want to start a track at 1/3 to make sure that the song has started
   const startTime = computed(() =>
-    Math.floor(store.state.tracks.tracks[trackID.value].length / 3)
+    Math.floor(tracksStore.tracks[`${trackID.value}`].length / 3)
   );
 
   function play() {

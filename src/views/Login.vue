@@ -26,21 +26,21 @@
 
 <script>
 import { ref } from "vue";
-import { useStore } from "vuex";
 import { useRouter, useRoute } from "vue-router";
+import { useAuthStore } from "../store/auth";
 
 export default {
   name: "Login",
   setup() {
     const name = ref(null);
     const password = ref(null);
-    const store = useStore();
+    const authStore = useAuthStore();
     const router = useRouter();
     const route = useRoute();
 
     async function submit(e) {
       e.preventDefault();
-      const succeeded = await store.dispatch("auth/login", {
+      const succeeded = await authStore.login({
         name: name.value,
         password: password.value,
       });

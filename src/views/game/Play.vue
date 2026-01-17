@@ -28,9 +28,9 @@
 
 <script>
 import { computed, ref, watch } from "vue";
-import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import Question from "../../components/Question.vue";
+import { useGamesStore } from "../../store/games";
 
 export default {
   name: "Game",
@@ -45,7 +45,7 @@ export default {
   },
   setup(props) {
     const router = useRouter();
-    const store = useStore();
+    const gamesStore = useGamesStore();
 
     const usedTracks = ref([]);
     const totalScore = ref(0);
@@ -61,7 +61,7 @@ export default {
 
     watch(currentQuestion, (newValue) => {
       if (newValue > 10) {
-        store.commit("games/addGame", {
+        gamesStore.addGame({
           usedTracks: usedTracks.value,
           totalScore: totalScore.value,
           difficulty: props.difficulty,
@@ -76,7 +76,7 @@ export default {
       currentQuestion.value = 1;
     }
 
-    const highScore = computed(() => store.getters["games/highScore"]);
+    const highScore = computed(() => gamesStore.highScore);
 
     return {
       ...props,
