@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@accentor/api-client-js@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@accentor/api-client-js/-/api-client-js-0.17.0.tgz#00da18459362e025d3897dde21ff5eeb222c137a"
-  integrity sha512-AcbgwmleguHmk6uQ7fXrpFUgPy9TDZy7ksX7UryplAm9TJfreNuzAAz9ho1ChmEPBggHBALoU8a33OL+v/dC/g==
+"@accentor/api-client-js@^0.23.5":
+  version "0.23.5"
+  resolved "https://registry.yarnpkg.com/@accentor/api-client-js/-/api-client-js-0.23.5.tgz#a75b683c38a33ab8eef8fed19bffe82c0a9bf941"
+  integrity sha512-6zHfTENpM2qGcP6x4DIzXDf1SBfU4/z4TDsC9w0qeKw2VamMfQppr7+yVWEZjRFr7VzrEbWPGJAk8BakQlhQDQ==
   dependencies:
-    fetch-retry "^4.1.1"
+    fetch-retry "^6.0.0"
 
 "@ampproject/remapping@^2.2.0":
   version "2.2.1"
@@ -1051,10 +1051,10 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
-fetch-retry@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/fetch-retry/-/fetch-retry-4.1.1.tgz#fafe0bb22b54f4d0a9c788dff6dd7f8673ca63f3"
-  integrity sha512-e6eB7zN6UBSwGVwrbWVH+gdLnkW9WwHhmq2YDK1Sh30pzx1onRVGBvogTlUeWxwTa+L86NYdo4hFkh7O8ZjSnA==
+fetch-retry@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/fetch-retry/-/fetch-retry-6.0.0.tgz#4ffdf92c834d72ae819e42a4ee2a63f1e9454426"
+  integrity sha512-BUFj1aMubgib37I3v4q78fYo63Po7t4HUPTpQ6/QE6yK6cIQrP+W43FYToeTEyg5m2Y7eFUtijUuAv/PDlWuag==
 
 file-entry-cache@^6.0.1:
   version "6.0.1"

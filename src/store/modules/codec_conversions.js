@@ -35,7 +35,9 @@ export default {
   },
   actions: {
     async index({ commit, rootState }) {
-      const generator = AccentorApi.codecConversions.index(rootState.auth);
+      const generator = AccentorApi.codecConversions.index(
+        rootState.auth.apiToken
+      );
       try {
         await fetchAll(commit, generator, "setCodecConversions");
         return true;
