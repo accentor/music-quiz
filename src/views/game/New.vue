@@ -73,19 +73,20 @@
 </template>
 
 <script>
-import { computed, ref } from "@vue/runtime-core";
+import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
-import { useStore } from "vuex";
+import { useGamesStore } from "../../store/games";
+import { useTracksStore } from "../../store/tracks";
 
 export default {
   name: "NewGame",
-
   setup() {
     const router = useRouter();
-    const store = useStore();
+    const gamesStore = useGamesStore();
+    const tracksStore = useTracksStore();
     const difficulty = ref("medium");
     const leaderBoard = computed(() =>
-      store.getters["games/leaderBoard"]
+      gamesStore.leaderBoard
         .filter((g) => g.difficulty === difficulty.value)
         .slice(0, 10)
     );
@@ -95,7 +96,7 @@ export default {
     }
 
     const enoughPlays = computed(
-      () => Object.keys(store.getters["tracks/tracksPlayedOnce"]).length > 100
+      () => Object.keys(tracksStore.tracksPlayedOnce).length > 100
     );
 
     return {
@@ -108,7 +109,7 @@ export default {
 };
 </script>
 
-<style css>
+<style lang="css">
 .button-group__input {
   display: none;
 }

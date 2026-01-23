@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import store from "../store";
+import { useAuthStore } from "../store/auth";
 import App from "../views/App.vue";
 import Login from "../views/Login.vue";
 import PlayGame from "../views/game/Play.vue";
@@ -39,10 +39,11 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const onLogin = to.matched.some((record) => record.meta.authOptional);
+  const authStore = useAuthStore();
 
-  if (onLogin && store.getters["auth/loggedIn"]) {
+  if (onLogin && authStore.loggedIn) {
     next({ name: "musicQuiz" });
-  } else if (onLogin || store.getters["auth/loggedIn"]) {
+  } else if (onLogin || authStore.loggedIn) {
     next();
   } else {
     next({

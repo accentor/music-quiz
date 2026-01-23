@@ -1,5 +1,10 @@
-export async function fetchAll(commit, generator, commitAction) {
-  commit("setStartLoading");
+export async function fetchAll(
+  generator,
+  setResult,
+  setStartLoading,
+  removeOld
+) {
+  setStartLoading();
   let done = false;
   let results = [];
   let counter = 0;
@@ -8,10 +13,10 @@ export async function fetchAll(commit, generator, commitAction) {
     ({ value, done } = await generator.next());
     results.push(...value);
     if (++counter % 5 === 0) {
-      commit(commitAction, results);
+      setResult(results);
       results = [];
     }
   }
-  commit(commitAction, results);
-  commit("removeOld");
+  setResult(results);
+  removeOld();
 }

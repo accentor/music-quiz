@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import { computed, ref, watch } from "vue";
-import { useStore } from "vuex";
+import { computed, onMounted, ref, watch } from "vue";
 import { usePlayer } from "../lib/player";
+import { useTracksStore } from "../store/tracks";
 
 export default {
   name: "Question",
@@ -50,7 +50,7 @@ export default {
   },
   emits: ["answered"],
   setup(props, context) {
-    const store = useStore();
+    const trackStore = useTracksStore();
     const score = ref(null);
     const options = ref([]);
     const correctOption = ref();
@@ -60,13 +60,13 @@ export default {
       let t;
       switch (props.difficulty) {
         case "hard":
-          t = store.getters["tracks/randomTracks"];
+          t = trackStore.randomTracks;
           break;
         case "medium":
-          t = store.getters["tracks/tracksWithoutReviewComment"];
+          t = trackStore.tracksWithoutReviewComment;
           break;
         case "easy":
-          t = store.getters["tracks/tracksPlayedOnce"];
+          t = trackStore.tracksPlayedOnce;
           break;
       }
       return t.filter((t) => !props.usedTracks.includes(t.id));
@@ -78,7 +78,7 @@ export default {
 
     const { trackID, play, seekTime, stop } = usePlayer();
     trackID.value = correctOption.value.id;
-    play();
+    onMounted(play);
 
     watch(seekTime, (newValue) => {
       if (newValue >= 15) {
