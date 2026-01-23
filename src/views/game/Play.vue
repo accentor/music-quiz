@@ -31,6 +31,7 @@ import { computed, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import Question from "../../components/Question.vue";
 import { useGamesStore } from "../../store/games";
+import { useTracksStore } from "../../store/tracks";
 
 export default {
   name: "Game",
@@ -46,6 +47,7 @@ export default {
   setup(props) {
     const router = useRouter();
     const gamesStore = useGamesStore();
+    const tracksStore = useTracksStore();
 
     const usedTracks = ref([]);
     const totalScore = ref(0);
@@ -66,6 +68,7 @@ export default {
           totalScore: totalScore.value,
           difficulty: props.difficulty,
         });
+        tracksStore.refreshRandomSeed();
         setTimeout(() => router.push({ path: "/app/game/new" }), 5000);
       }
     });
