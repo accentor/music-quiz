@@ -2,7 +2,7 @@
   <div class="w-screen min-h-screen flex flex-col justify-between">
     <div>
       <div
-        :style="{ width: `${currentQuestion * 10}vw` }"
+        :style="{ width: `${Math.min(currentQuestion, 10) * 10}vw` }"
         class="bg-primary h-4"
         aria-hidden="true"
       ></div>
