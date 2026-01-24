@@ -25,14 +25,34 @@ export const useTracksStore = defineStore("tracks", () => {
   const randomTracks = computed(() =>
     randomSort(tracksOver30s.value, randomSeed.value),
   );
-  const tracksWithoutReviewComment = computed(() =>
-    randomTracks.value.filter((t) => t.review_comment === null),
-  );
   const tracksPlayedOnce = computed(() =>
-    tracksWithoutReviewComment.value.filter((t) =>
-      playsStore.playedTrackIds.includes(t.id),
-    ),
+    randomTracks.value.filter((t) => playsStore.playedTrackIds.includes(t.id)),
   );
+  const tracksWeightedForPlayCount = computed(() => {
+    // Assuming that the random sort distributes the plays evenly, track ids
+    // that occur more often will have a higher chance of ending up early in the
+    // randomized list. At the end we make the tracks unique again, preserving
+    // the property of tracks that are played more often ending up early in the
+    // list.
+    const trackIds = randomSort(
+      Object.values(playsStore.plays).filter(
+        (p) => (tracks.value[`${p.track_id}`].length ?? 0) > 30,
+      ),
+      randomSeed.value,
+    ).map((play) => play.track_id);
+    const used = new Set();
+    const result = [];
+    let index = 0;
+    while (index < trackIds.length && used.size < 100) {
+      const id = trackIds[index];
+      if (!used.has(id)) {
+        used.add(id);
+        result.push(tracks.value[`${id}`]);
+      }
+      index++;
+    }
+    return result;
+  });
 
   function refreshRandomSeed() {
     randomSeed.value = Math.round(Math.random() * RANDOM_SEED_MAX);
@@ -81,8 +101,8 @@ export const useTracksStore = defineStore("tracks", () => {
     index,
     allTracks,
     randomTracks,
-    tracksWithoutReviewComment,
     tracksPlayedOnce,
+    tracksWeightedForPlayCount,
     refreshRandomSeed,
   };
 });

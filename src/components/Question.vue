@@ -63,16 +63,16 @@ export default {
           t = trackStore.randomTracks;
           break;
         case "medium":
-          t = trackStore.tracksWithoutReviewComment;
+          t = trackStore.tracksPlayedOnce;
           break;
         case "easy":
-          t = trackStore.tracksPlayedOnce;
+          t = trackStore.tracksWeightedForPlayCount;
           break;
       }
       return t.filter((t) => !props.usedTracks.includes(t.id));
     });
 
-    options.value = tracks.value.slice(-4);
+    options.value = tracks.value.slice(0, 4);
 
     correctOption.value = options.value[Math.floor(Math.random() * 4)];
 
