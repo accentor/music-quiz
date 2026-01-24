@@ -21,4 +21,11 @@ export default [
     },
   },
   prettierPlugin,
+  {
+    ignores: [
+      "dist/*",
+      // Our config doesn't handle the cjs correctly, we'll just skip this file
+      "tailwind.config.cjs",
+    ],
+  },
 ];
