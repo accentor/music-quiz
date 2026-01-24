@@ -10,7 +10,7 @@
         <button
           v-for="option in options"
           :key="option.id"
-          class="bg-secundary rounded-xl font-medium text-white px-8 py-4 truncate hover:bg-primary"
+          class="bg-secondary rounded-xl font-medium text-white px-8 py-4 truncate hover:bg-primary"
           :class="{
             'correct-answer': score !== null && option.id === correctOption.id,
             'wrong-answer': score === 0 && option.id === selected,
@@ -103,6 +103,8 @@ export default {
 </script>
 
 <style scoped>
+@reference "../styles.css";
+
 .correct-answer {
   @apply ring-4 ring-offset-4 ring-offset-white ring-green-600;
 }

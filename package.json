@@ -12,6 +12,7 @@
   "type": "module",
   "dependencies": {
     "@accentor/api-client-js": "^0.23.5",
+    "@tailwindcss/postcss": "^4.1.18",
     "@vueuse/core": "^14.1.0",
     "autoprefixer": "^10.4.23",
     "pinia": "^3.0.4",

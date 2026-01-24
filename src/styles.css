@@ -1,4 +1,7 @@
 /* ./src/index.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@theme {
+    --color-primary: #2A7EB7;
+    --color-secondary: #226592;
+    --color-accent: #E54942;
+}

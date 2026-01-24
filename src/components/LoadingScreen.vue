@@ -30,8 +30,10 @@ export default {
 </script>
 
 <style>
+@reference "../styles.css";
+
 .loader {
-  @apply text-secundary text-3xl font-bold -rotate-3;
+  @apply text-secondary text-3xl font-bold -rotate-3;
 }
 
 .loader::after {
