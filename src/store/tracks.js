@@ -20,18 +20,18 @@ export const useTracksStore = defineStore("tracks", () => {
   const allTracks = computed(() => Object.values(tracks.value));
 
   const tracksOver30s = computed(() =>
-    allTracks.value.filter((track) => track.length > 30)
+    allTracks.value.filter((track) => track.length > 30),
   );
   const randomTracks = computed(() =>
-    randomSort(tracksOver30s.value, randomSeed.value)
+    randomSort(tracksOver30s.value, randomSeed.value),
   );
   const tracksWithoutReviewComment = computed(() =>
-    randomTracks.value.filter((t) => t.review_comment === null)
+    randomTracks.value.filter((t) => t.review_comment === null),
   );
   const tracksPlayedOnce = computed(() =>
     tracksWithoutReviewComment.value.filter((t) =>
-      playsStore.playedTrackIds.includes(t.id)
-    )
+      playsStore.playedTrackIds.includes(t.id),
+    ),
   );
 
   function refreshRandomSeed() {

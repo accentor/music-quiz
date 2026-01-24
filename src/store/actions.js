@@ -2,7 +2,7 @@ export async function fetchAll(
   generator,
   setResult,
   setStartLoading,
-  removeOld
+  removeOld,
 ) {
   setStartLoading();
   let done = false;

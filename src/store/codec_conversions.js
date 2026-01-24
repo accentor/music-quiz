@@ -41,7 +41,7 @@ export const useCodecConversionsStore = defineStore("codecConversions", () => {
 
   const sortedCodecConversions = computed(() => {
     return Object.values(codecConversions.value).sort(
-      (cc1, cc2) => cc1.id - cc2.id
+      (cc1, cc2) => cc1.id - cc2.id,
     );
   });
 
@@ -52,7 +52,7 @@ export const useCodecConversionsStore = defineStore("codecConversions", () => {
         generator,
         setCodecConversions,
         setStartLoading,
-        removeOld
+        removeOld,
       );
       return true;
     } catch (error) {

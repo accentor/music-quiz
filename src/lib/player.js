@@ -12,7 +12,7 @@ export function usePlayer() {
   const seekTime = ref(0);
   const trackID = ref(null);
   const codecConversion = computed(
-    () => codecConversionsStore.sortedCodecConversions[0]
+    () => codecConversionsStore.sortedCodecConversions[0],
   );
 
   const currentTrackURL = computed(() => {
@@ -31,7 +31,7 @@ export function usePlayer() {
 
   // We want to start a track at 1/3 to make sure that the song has started
   const startTime = computed(() =>
-    Math.floor(tracksStore.tracks[`${trackID.value}`].length / 3)
+    Math.floor(tracksStore.tracks[`${trackID.value}`].length / 3),
   );
 
   function play() {
