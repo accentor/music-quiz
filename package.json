@@ -8,6 +8,7 @@
     "serve": "vite preview",
     "lint": "eslint --ext .js,.vue . --fix"
   },
+  "type": "module",
   "dependencies": {
     "@accentor/api-client-js": "^0.23.5",
     "@vue/eslint-config-prettier": "^7.0.0",
