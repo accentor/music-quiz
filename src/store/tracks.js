@@ -29,19 +29,27 @@ export const useTracksStore = defineStore("tracks", () => {
     randomTracks.value.filter((t) => playsStore.playedTrackIds.includes(t.id)),
   );
   const tracksWeightedForPlayCount = computed(() => {
+    // Assuming that the random sort distributes the plays evenly, track ids
+    // that occur more often will have a higher chance of ending up early in the
+    // randomized list. At the end we make the tracks unique again, preserving
+    // the property of tracks that are played more often ending up early in the
+    // list.
     const trackIds = randomSort(
-      Object.values(playsStore.plays),
+      Object.values(playsStore.plays).filter(
+        (p) => (tracks.value[`${p.track_id}`].length ?? 0) > 30,
+      ),
       randomSeed.value,
     ).map((play) => play.track_id);
     const used = new Set();
     const result = [];
-    for (let id of trackIds) {
-      if (!used.has(id) && tracks.value[`${id}`]) {
+    let index = 0;
+    while (index < trackIds.length && used.size < 100) {
+      const id = trackIds[index];
+      if (!used.has(id)) {
         used.add(id);
-        if (tracks.value[`${id}`].length > 30) {
-          result.push(tracks.value[`${id}`]);
-        }
+        result.push(tracks.value[`${id}`]);
       }
+      index++;
     }
     return result;
   });
