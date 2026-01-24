@@ -15,7 +15,7 @@ export const useGamesStore = defineStore("games", () => {
   const leaderBoard = computed(() =>
     games.value
       .filter((g1) => g1.totalScore > 0)
-      .sort((g1, g2) => g2.totalScore - g1.totalScore)
+      .sort((g1, g2) => g2.totalScore - g1.totalScore),
   );
 
   const highScore = computed(() => leaderBoard.value[0]?.totalScore);

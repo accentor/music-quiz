@@ -88,7 +88,7 @@ export default {
     const leaderBoard = computed(() =>
       gamesStore.leaderBoard
         .filter((g) => g.difficulty === difficulty.value)
-        .slice(0, 10)
+        .slice(0, 10),
     );
 
     function startGame() {
@@ -96,7 +96,7 @@ export default {
     }
 
     const enoughPlays = computed(
-      () => Object.keys(tracksStore.tracksPlayedOnce).length > 100
+      () => Object.keys(tracksStore.tracksPlayedOnce).length > 100,
     );
 
     return {
