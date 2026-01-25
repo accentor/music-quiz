@@ -31,7 +31,9 @@ export function usePlayer() {
       clearInterval(intervalHandle);
     }
     audio.value.setAttribute("src", newValue);
-    intervalHandle.value = setInterval(checkTime, 100);
+
+    // We update the time every 16ms, to approach 60fps
+    intervalHandle.value = setInterval(checkTime, 16);
   });
 
   // We want to start a track at 1/3 to make sure that the song has started
@@ -52,7 +54,8 @@ export function usePlayer() {
 
   // Convert currentTime back to countdown
   function checkTime() {
-    const time = Math.floor(audio.value.currentTime) - startTime.value;
+    const time =
+      Math.floor(audio.value.currentTime * 1000) / 1000 - startTime.value;
     if (time !== seekTime.value) {
       seekTime.value = time;
     }
