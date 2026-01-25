@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen flex flex-col items-center justify-center space-y-20">
     <div class="space-y-6 text-center">
-      <h1 class="uppercase font-bold text-3xl -rotate-2 text-secundary">
+      <h1 class="uppercase font-bold text-3xl -rotate-2 text-secondary">
         The accentor Music Quiz!
       </h1>
       <p class="text-lg text-gray-800 font-medium">
@@ -58,7 +58,7 @@
         </label>
       </div>
       <button
-        class="-mx-4 text-white text-xl bg-primary uppercase font-medium px-10 py-6 rounded-lg hover:bg-secundary focus:outline-none focus:ring-4 focus:ring-primary focus:ring-offset-4 focus:ring-offset-white"
+        class="-mx-4 text-white text-xl bg-primary uppercase font-medium px-10 py-6 rounded-lg hover:bg-secondary focus:outline-none focus:ring-4 focus:ring-primary focus:ring-offset-4 focus:ring-offset-white"
         @click="startGame"
       >
         Start new game!
@@ -117,13 +117,15 @@ export default {
 </script>
 
 <style lang="css">
+@reference "../../styles.css";
+
 .button-group__input {
   display: none;
 }
 
 .button-group__button {
   @apply w-full border-primary border-2 text-center border-r-0;
-  @apply uppercase font-medium text-base text-secundary p-3;
+  @apply uppercase font-medium text-base text-secondary p-3;
 }
 
 .button-group__input:disabled + .button-group__button {
