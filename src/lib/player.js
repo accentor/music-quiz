@@ -11,6 +11,7 @@ export function usePlayer() {
   const audio = ref(new Audio());
   const seekTime = ref(0);
   const trackID = ref(null);
+  const intervalHandle = ref(null);
   const codecConversion = computed(
     () => codecConversionsStore.sortedCodecConversions[0],
   );
@@ -26,7 +27,11 @@ export function usePlayer() {
   });
 
   watch(currentTrackURL, (newValue) => {
+    if (intervalHandle.value) {
+      clearInterval(intervalHandle.value);
+    }
     audio.value.setAttribute("src", newValue);
+    intervalHandle.value = setInterval(checkTime, 100);
   });
 
   // We want to start a track at 1/3 to make sure that the song has started
@@ -53,7 +58,6 @@ export function usePlayer() {
     }
   }
 
-  const intervalHandle = setInterval(checkTime, 100);
   onBeforeUnmount(() => {
     clearInterval(intervalHandle.value);
     stop();
