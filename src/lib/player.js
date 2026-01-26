@@ -28,7 +28,7 @@ export function usePlayer() {
 
   watch(currentTrackURL, (newValue) => {
     if (intervalHandle.value) {
-      clearInterval(intervalHandle);
+      clearInterval(intervalHandle.value);
     }
     audio.value.setAttribute("src", newValue);
 
