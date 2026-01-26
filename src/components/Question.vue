@@ -21,7 +21,7 @@
         </button>
       </div>
       <div class="space-y-2 text-center w-1/2 mx-auto">
-        <p>{{ 15 - seekTime }} seconds remaining</p>
+        <p>{{ 15 - Math.floor(seekTime) }} seconds remaining</p>
         <span
           class="bg-accent h-4 block"
           :style="{ width: `${100 - (100 / 15) * seekTime}%` }"
@@ -89,7 +89,9 @@ export default {
     watch(selected, (newValue) => {
       stop();
       const currentScore =
-        correctOption.value.id === newValue ? 15 - seekTime.value : 0;
+        correctOption.value.id === newValue
+          ? 15 - Math.floor(seekTime.value)
+          : 0;
       score.value = currentScore;
       context.emit("answered", {
         score: score.value,

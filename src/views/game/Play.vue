@@ -3,7 +3,7 @@
     <div>
       <div
         :style="{ width: `${Math.min(currentQuestion, 10) * 10}vw` }"
-        class="bg-primary h-4"
+        class="progress-bar bg-primary h-4"
         aria-hidden="true"
       ></div>
       <span v-if="currentQuestion < 11" class="text-right w-full block px-4">
@@ -94,4 +94,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.progress-bar {
+  transition: width 250ms ease-in-out;
+}
+</style>
