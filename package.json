@@ -24,12 +24,12 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.4",
     "@vue/compiler-sfc": "^3.5.31",
-    "eslint": "^9.39.1",
+    "eslint": "^10.3.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
-    "eslint-plugin-vue": "^10.6.2",
+    "eslint-plugin-vue": "^10.9.0",
     "globals": "^17.6.0",
-    "prettier": "^3.7.3",
+    "prettier": "^3.8.3",
     "vite": "^2.9.14",
     "vue-eslint-parser": "^10.4.0"
   }
