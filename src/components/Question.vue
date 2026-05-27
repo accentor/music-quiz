@@ -72,7 +72,14 @@ export default {
       return t.filter((t) => !props.usedTracks.includes(t.id));
     });
 
-    options.value = tracks.value.slice(0, 4);
+    options.value = tracks.value.slice(0, 4).map((t) => ({
+      id: t.id,
+      title: `${[...t.track_artists]
+        .sort((ta1, ta2) => ta1.order - ta2.order)
+        .filter((ta) => !ta.hidden)
+        .map((ta) => ta.name)
+        .join(" / ")} - ${t.title}`,
+    }));
 
     correctOption.value = options.value[Math.floor(Math.random() * 4)];
 
