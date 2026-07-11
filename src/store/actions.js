@@ -9,7 +9,7 @@ export async function fetchAll(
   let results = [];
   let counter = 0;
   while (!done) {
-    let value = [];
+    let value;
     ({ value, done } = await generator.next());
     results.push(...value);
     if (++counter % 5 === 0) {
