@@ -14,6 +14,10 @@ updates:
         - "prettier"
         - "@vue/eslint-config-prettier"
         - "vue-eslint-parser"
+    vite:
+      patterns:
+        - "@vitejs/"
+        - "vite"
   open-pull-requests-limit: 10
 - package-ecosystem: github-actions
   directory: "/"
