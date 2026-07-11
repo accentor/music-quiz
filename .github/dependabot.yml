@@ -8,10 +8,12 @@ updates:
   groups:
     linting:
       patterns:
+        - "@eslint/*"
         - "eslint"
         - "eslint-*"
         - "prettier"
         - "@vue/eslint-config-prettier"
+        - "vue-eslint-parser"
   open-pull-requests-limit: 10
 - package-ecosystem: github-actions
   directory: "/"
