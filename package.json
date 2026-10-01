@@ -14,7 +14,7 @@
     "@accentor/api-client-js": "^0.24.2",
     "@tailwindcss/postcss": "^4.3.3",
     "@vueuse/core": "^14.4.0",
-    "autoprefixer": "^10.5.4",
+    "autoprefixer": "^10.6.1",
     "pinia": "^4.0.3",
     "postcss": "^8.5.25",
     "tailwindcss": "^4.3.3",
